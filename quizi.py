@@ -1,18 +1,18 @@
 import structures
 
-currentSet = structures.Set("",[])
+currentSet = structures.Set("N/A",[])
 
 def loadSet(setName):
     global currentSet
     newSet = structures.Set("",[])
-    with open(f"sets/{setName}.set") as f:
+    with open(setName, "r") as f:
         for line in f:
             if line[0] != "{":
                 newSet.name = line.strip()
                 continue
             line = line.strip()
             line = line[1:-1]
-            line = line.split(":")
+            line = line.split("\:/")
             for item in range(len(line)):
                 line[item] = line[item][1:-1]
             newCard = structures.Card(line[0], line[1])
